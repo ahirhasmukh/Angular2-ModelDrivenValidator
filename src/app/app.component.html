@@ -1,3 +1,111 @@
-<h1>
-  {{title}}
-</h1>
+<form [formGroup]="myForm" novalidate (ngSubmit)="onSubmit(myForm.value, myForm.valid)">
+    <div  style="margin-top:10px;">
+        <label>Firstname:</label>
+        <div><input type="text" formControlName="firstname" placeholder="Enter firstname" #fname/></div>
+        <div>{{fname.className}}</div>
+        <validation [controlName]="validationMessageConstants.FIRST_NAME_REQUIRED"
+                    *ngIf="myForm.controls.firstname.hasError('required') && myForm.controls.firstname.touched"
+                    [isFormInvalid]="submitted">
+        </validation>
+        <validation [controlName]="validationMessageConstants.FIRST_NAME + validationMessageConstants.LENGTH_2_TO_10_CHARACTER"
+                    *ngIf="myForm.controls.firstname.hasError('minlength') || myForm.controls.firstname.hasError('maxlength')"
+                    [isFormInvalid]="submitted">
+        </validation>
+    </div>
+
+    <div style="margin-top:10px;">
+        <label>Lastname:</label>
+        <div><input type="text" formControlName="lastname" placeholder="Enter lastname"/></div>
+        <validation [controlName]="validationMessageConstants.LAST_NAME_REQUIRED"
+                    *ngIf="myForm.controls.lastname.hasError('required') && myForm.controls.lastname.touched"
+                    [isFormInvalid]="submitted">
+        </validation>
+        <validation [controlName]="validationMessageConstants.LAST_NAME + validationMessageConstants.LENGTH_2_TO_10_CHARACTER"
+                    *ngIf="myForm.controls.lastname.hasError('minlength') || myForm.controls.lastname.hasError('maxlength')"
+                    [isFormInvalid]="submitted">
+        </validation>
+    </div>
+
+    <div formGroupName="address">
+        <div style="margin-top:10px;">
+            <label>Home/Flate No.</label>
+            <div>
+                <select formControlName="homeNumber" #select>
+                    <option selected value="">Select Home/Flate No.</option>
+                    <option value="0">1</option>
+                    <option value="1">2</option>
+                    <option value="2">3</option>
+                    <option value="3">4</option>
+                    <option value="4">5</option>
+                    <option value="5">6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                </select>
+            </div>
+            <validation [controlName]="validationMessageConstants.SELECT" [errorMessage]="validationMessageConstants.REQUIRED_MSG" *ngIf="myForm.controls.address.controls.homeNumber.hasError('required') && myForm.controls.address.controls.homeNumber.touched" [isFormInvalid]="submitted"></validation>
+            <div>{{select.className}}</div>
+        </div>
+        <div style="margin-top:10px;">
+            <label>Street:</label>
+            <div><input type="text" formControlName="street" placeholder="Enter street"/></div>
+        </div>
+        <div style="margin-top:10px;">
+            <label>Zip:</label>
+            <div><input type="text" formControlName="zipcode" placeholder="Enter zip"/></div>
+            <validation [controlName]="validationMessageConstants.ZIPCODE" [errorMessage]="validationMessageConstants.REQUIRED_MSG" *ngIf="myForm.controls.address.controls.zipcode.hasError('required') && myForm.controls.address.controls.zipcode.touched" [isFormInvalid]="submitted"></validation>
+            <validation [controlName]="validationMessageConstants.ZIPCODE" [errorMessage]="validationMessageConstants.ZIPCODE_PATTERN" *ngIf="myForm.controls.address.controls.zipcode.hasError('pattern')" [isFormInvalid]="submitted"></validation>
+        </div>
+        <div style="margin-top:10px;">
+            <label>Mobile number:</label>
+            <div><input type="text" formControlName="mobileNo" placeholder="Enter mobile number"/></div>
+            <validation [controlName]="validationMessageConstants.MOBILE_NUMBER" [errorMessage]="validationMessageConstants.REQUIRED_MSG" *ngIf="myForm.controls.address.controls.mobileNo.hasError('required') && myForm.controls.address.controls.mobileNo.touched" [isFormInvalid]="submitted"></validation>
+            <validation [controlName]="validationMessageConstants.MOBILE_NUMBER" [errorMessage]="validationMessageConstants.MOBILE_PATTERN" *ngIf="myForm.controls.address.controls.mobileNo.hasError('pattern')" [isFormInvalid]="submitted"></validation>
+        </div>
+        <div style="margin-top:10px;">
+            <label>Email address:</label>
+            <div><input type="text" formControlName="emailId" placeholder="Enter email address"/></div>
+            <validation [controlName]="validationMessageConstants.EMAIL_ADDRESS" [errorMessage]="validationMessageConstants.REQUIRED_MSG" *ngIf="myForm.controls.address.controls.emailId.hasError('required') && myForm.controls.address.controls.emailId.touched" [isFormInvalid]="submitted"></validation>
+            <validation [errorMessage]="validationMessageConstants.VALID_EMAIL_ADDRESS" *ngIf="myForm.controls.address.controls.emailId.hasError('pattern')" [isFormInvalid]="submitted"></validation>
+        </div>
+    </div>
+    <div style="width: 200px;margin-top: 10px;">
+       <md2-autocomplete [items]="cityList"
+                          item-text="name"
+                          formControlName="items"
+                          required
+                          (change)="handleChange($event)"
+                          placeholder="Select city">
+        </md2-autocomplete>
+        <validation [controlName]="validationMessageConstants.CITY" [errorMessage]="validationMessageConstants.REQUIRED_MSG" *ngIf="myForm.controls.items.hasError('required') && myForm.controls.items.touched" [isFormInvalid]="submitted"></validation>
+        <!--<validation [errorMessage]="validationMessageConstants.VALID_EMAIL_ADDRESS" *ngIf="myForm.controls.items.hasError('pattern')" [isFormInvalid]="submitted"></validation>-->
+    </div>
+
+    <div style="margin-top:10px;">
+        <div><button type="submit" [disabled]="!myForm.valid">Save</button>
+        <button type="button" (click)="reset()">Cancel</button> </div>
+    </div>
+</form>
+
+<!-- <table>
+    <thead>
+        <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Street</th>
+            <th>Zipcode</th>
+            <th>City</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+-->

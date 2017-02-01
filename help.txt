@@ -1,0 +1,4 @@
+For validations :
+http://blog.angular-university.io/introduction-to-angular-2-forms-template-driven-vs-model-driven/
+http://www.kirjai.com/validation-model-driven-forms-ng2/
+https://www.youtube.com/watch?v=JtdYpDESmlg

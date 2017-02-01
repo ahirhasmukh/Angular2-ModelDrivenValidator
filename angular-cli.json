@@ -29,7 +29,11 @@
     }
   ],
   "addons": [],
-  "packages": [],
+  "packages": [
+    "angular2-select': 'node_modules/angular2-select",
+    "ng2-auto-complete': 'npm:ng2-auto-complete/dist/ng2-auto-complete.umd.js",
+    "@angular/material': 'https://rawgit.com/angular/material2-builds/master/bundles/material.umd.js"
+  ],
   "e2e": {
     "protractor": {
       "config": "./protractor.conf.js"
@@ -39,6 +43,10 @@
     "karma": {
       "config": "./karma.conf.js"
     }
+  },
+  "angular2-select": {
+    "main": "index.js",
+    "defaultExtension": "js"
   },
   "defaults": {
     "styleExt": "css",

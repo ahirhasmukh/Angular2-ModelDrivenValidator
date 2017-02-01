@@ -1,0 +1,13 @@
+.ng-pristine.ng-untouched validation{
+    display: none;
+}
+.ng-dirty.ng-invalid.ng-touched validation,
+.ng-dirty.ng-invalid.ng-untouched validation{
+    display: block;
+}
+
+/*
+http://plnkr.co/edit/fYxjHY5xALoLuqaQze6u?p=preview
+https://scotch.io/tutorials/using-angular-2s-model-driven-forms-with-formgroup-and-formcontrol
+https://juristr.com/blog/2016/11/ng2-template-driven-form-validators/
+*/

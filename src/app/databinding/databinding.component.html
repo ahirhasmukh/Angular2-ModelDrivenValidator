@@ -1,0 +1,32 @@
+<p>
+  {{stringInterpolation}} | {{numberInterpolation}}
+</p>
+
+<input type="text" value="{{stringInterpolation}}"><br/><br/>
+<h3>DOM Property binding</h3>
+<input type="text" [value]="stringInterpolation">
+<br/>
+<h3>Directive Propery binding</h3>
+
+<div [ngClass]="{redBorder : true}">This is directive property binding</div>
+
+<br/>
+
+<div [ngClass]="{redBorder : onTest()}">This is directive property binding</div>
+<br/>
+
+<div [ngStyle]="{color : 'green'}">This is directive property binding</div>
+<br/><br/>
+
+<h3>Custom property binding</h3>
+<app-property-binding [result]="50+50"></app-property-binding>
+<br/><br/>
+
+<h3>Custom Event Binding</h3>
+<app-event-binding (clicked)="onClicked($event)"></app-event-binding>
+<br/><br/>
+
+<h3>Two way data binding</h3>
+<app-two-way-binding></app-two-way-binding>
+
+<br/><br/><br/><br/><br/><br/><br/><br/>

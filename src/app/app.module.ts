@@ -44,7 +44,7 @@ import {ValidationComponent} from "./validation/validation.component";
     MaterialModule.forRoot(),
     Ng2CompleterModule,
     SelectModule,
-    Md2Module
+    Md2Module.forRoot()
   ],
   providers: [ ],
   bootstrap: [AppComponent]

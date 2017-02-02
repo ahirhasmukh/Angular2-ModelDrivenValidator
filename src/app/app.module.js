@@ -52,7 +52,7 @@ var AppModule = (function () {
                 material_1.MaterialModule.forRoot(),
                 ng2_completer_1.Ng2CompleterModule,
                 ng2_select_1.SelectModule,
-                md2_1.Md2Module
+                md2_1.Md2Module.forRoot()
             ],
             providers: [],
             bootstrap: [app_component_1.AppComponent]

@@ -46,6 +46,8 @@ var AppComponent = (function () {
         this.myForm = this.formBuilder.group({
             firstname: new forms_1.FormControl('', [forms_1.Validators.required, forms_1.Validators.minLength(2), forms_1.Validators.maxLength(10)]),
             lastname: new forms_1.FormControl('', [forms_1.Validators.required, forms_1.Validators.minLength(2), forms_1.Validators.maxLength(10)]),
+            fromdate: new forms_1.FormControl('', [forms_1.Validators.required]),
+            todate: new forms_1.FormControl('', [forms_1.Validators.required]),
             address: this.formBuilder.group({
                 homeNumber: new forms_1.FormControl('', forms_1.Validators.required),
                 street: new forms_1.FormControl(),
@@ -54,15 +56,32 @@ var AppComponent = (function () {
                 emailId: new forms_1.FormControl('', [forms_1.Validators.required, forms_1.Validators.pattern(/^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i)])
             }),
             items: new forms_1.FormControl('', [forms_1.Validators.required]),
-            color: new forms_1.FormControl()
+            color: new forms_1.FormControl(),
+            singalImage: new forms_1.FormControl(''),
+            multipleImages: new forms_1.FormControl('')
         });
+    };
+    AppComponent.prototype.selectImage = function (event) {
+        var eventObj = event;
+        var target = eventObj.target;
+        var files = target.files;
+        this.file = files[0];
+        console.log(this.file);
+    };
+    AppComponent.prototype.onChange = function (event) {
+        var files = event.srcElement.files;
+        var file = event.target.files;
+        console.log(files);
+        console.log(file);
     };
     AppComponent.prototype.onSubmit = function (value, check) {
         if (check) {
             console.log('Firstname:' + value.firstname);
             console.log('Lastname:' + value.lastname);
+            console.log('From date:' + value.fromdate);
+            console.log('To date:' + value.todate);
             console.log('Number:' + value.address.homeNumber);
-            console.log('Street:' + value.address.street);
+            /*console.log('Street:'+ value.address.street);*/
             console.log('Zipcode:' + value.address.zipcode);
             console.log('Mobile number:' + value.address.mobileNo);
             console.log('Email address:' + value.address.emailId);
@@ -75,8 +94,13 @@ var AppComponent = (function () {
     AppComponent.prototype.handleChange = function (value) {
         console.log('Changed data: ', value);
     };
-    AppComponent.prototype.reset = function () {
+    AppComponent.prototype.reset = function (fromdate, todate) {
         this.myForm.reset();
+        fromdate._value = null;
+        fromdate._viewValue = null;
+        todate._value = null;
+        todate._viewValue = null;
+        /*this.addDataForm();*/
     };
     AppComponent = __decorate([
         core_1.Component({

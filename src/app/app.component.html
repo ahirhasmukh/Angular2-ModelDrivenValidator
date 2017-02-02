@@ -1,6 +1,6 @@
 <form [formGroup]="myForm" novalidate (ngSubmit)="onSubmit(myForm.value, myForm.valid)">
     <div  style="margin-top:10px;">
-        <label>Firstname:</label>
+        <label>Firstname <span class="btn-danger">*</span>:</label>
         <div><input type="text" formControlName="firstname" placeholder="Enter firstname" #fname/></div>
         <!--<div>{{fname.className}}</div>-->
         <validation [errorMessage]="validationMessageConstants.FIRST_NAME_REQUIRED"
@@ -12,7 +12,7 @@
     </div>
 
     <div style="margin-top:10px;">
-        <label>Lastname:</label>
+        <label>Lastname <span class="btn-danger">*</span>:</label>
         <div><input type="text" formControlName="lastname" placeholder="Enter lastname"/></div>
         <validation [errorMessage]="validationMessageConstants.LAST_NAME_REQUIRED"
                     *ngIf="myForm.controls.lastname.hasError('required') && myForm.controls.lastname.touched">
@@ -46,43 +46,43 @@
 
     <div formGroupName="address">
         <div style="margin-top:10px;">
-            <label>Home/Flate No.</label>
+            <label>Home/Flate No. <span class="btn-danger">*</span>:</label>
             <div>
                 <select formControlName="homeNumber" #select>
                     <option selected value="">Select Home/Flate No.</option>
-                    <option value="0">1</option>
-                    <option value="1">2</option>
-                    <option value="2">3</option>
-                    <option value="3">4</option>
-                    <option value="4">5</option>
-                    <option value="5">6</option>
-                    <option>7</option>
-                    <option>8</option>
-                    <option>9</option>
-                    <option>10</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
                 </select>
             </div>
             <validation [errorMessage]="validationMessageConstants.SELECT + validationMessageConstants.REQUIRED_MSG" *ngIf="myForm.controls.address.controls.homeNumber.hasError('required') && myForm.controls.address.controls.homeNumber.touched"></validation>
             <!--<div>{{select.className}}</div>-->
         </div>
         <div style="margin-top:10px;display: none">
-            <label>Street:</label>
+            <label>Street <span class="btn-danger">*</span>:</label>
             <div><input type="text" formControlName="street" placeholder="Enter street"/></div>
         </div>
         <div style="margin-top:10px;">
-            <label>Zip:</label>
+            <label>Zipcode <span class="btn-danger">*</span>:</label>
             <div><input type="text" formControlName="zipcode" placeholder="Enter zip"/></div>
             <validation [errorMessage]="validationMessageConstants.ZIPCODE + validationMessageConstants.REQUIRED_MSG" *ngIf="myForm.controls.address.controls.zipcode.hasError('required') && myForm.controls.address.controls.zipcode.touched"></validation>
             <validation [errorMessage]="validationMessageConstants.ZIPCODE + validationMessageConstants.ZIPCODE_PATTERN" *ngIf="myForm.controls.address.controls.zipcode.hasError('pattern')"></validation>
         </div>
         <div style="margin-top:10px;">
-            <label>Mobile number:</label>
+            <label>Mobile number <span class="btn-danger">*</span>:</label>
             <div><input type="text" formControlName="mobileNo" placeholder="Enter mobile number"/></div>
             <validation [errorMessage]="validationMessageConstants.MOBILE_NUMBER + validationMessageConstants.REQUIRED_MSG" *ngIf="myForm.controls.address.controls.mobileNo.hasError('required') && myForm.controls.address.controls.mobileNo.touched"></validation>
             <validation [errorMessage]="validationMessageConstants.MOBILE_NUMBER + validationMessageConstants.MOBILE_PATTERN" *ngIf="myForm.controls.address.controls.mobileNo.hasError('pattern')"></validation>
         </div>
         <div style="margin-top:10px;">
-            <label>Email address:</label>
+            <label>Email address <span class="btn-danger">*</span>:</label>
             <div><input type="text" formControlName="emailId" placeholder="Enter email address"/></div>
             <validation [errorMessage]="validationMessageConstants.EMAIL_ADDRESS + validationMessageConstants.REQUIRED_MSG" *ngIf="myForm.controls.address.controls.emailId.hasError('required') && myForm.controls.address.controls.emailId.touched"></validation>
             <validation [errorMessage]="validationMessageConstants.VALID_EMAIL_ADDRESS" *ngIf="myForm.controls.address.controls.emailId.hasError('pattern')"></validation>
@@ -91,18 +91,18 @@
 
     <div style="width: 200px;margin-top: 10px;">
        <div><md2-autocomplete [items]="cityList" item-text="name" formControlName="items" (change)="handleChange($event)" placeholder="Select city"></md2-autocomplete></div>
-        <validation [errorMessage]="validationMessageConstants.CITY" *ngIf="myForm.controls.items.hasError('required') && myForm.controls.items.touched"></validation>
+       <validation [errorMessage]="validationMessageConstants.CITY" *ngIf="myForm.controls.items.hasError('required') && myForm.controls.items.dirty"></validation>
         <!--<validation [errorMessage]="validationMessageConstants.VALID_EMAIL_ADDRESS" *ngIf="myForm.controls.items.hasError('pattern')" [isFormInvalid]="submitted" [disabled]="!myForm.valid"></validation>-->
     </div>
 
     <div style="margin-top:10px;">
-        <label>Single image:</label>
+        <label>Single image <span class="btn-danger">*</span>:</label>
         <div><input type="file" (change)="selectImage($event)" formControlName="singalImage" placeholder="Enter image" accept=".png,.jpg,.jpeg,.gif"/></div>
         <validation [errorMessage]="validationMessageConstants.SINGLE_IMAGE_REQUIRED" *ngIf="myForm.controls.singalImage.hasError('required') && myForm.controls.singalImage.touched"></validation>
     </div>
 
     <div style="margin-top:10px;">
-        <label>Multiple image:</label>
+        <label>Multiple image <span class="btn-danger">*</span>:</label>
         <div><input type="file"  (change)="onChange($event)" multiple formControlName="multipleImages" placeholder="Enter multiple image" accept=".png,.jpg,.jpeg,.gif"/></div>
         <validation [errorMessage]="validationMessageConstants.MULTIPLE_IMAGES_REQUIRED" *ngIf="myForm.controls.multipleImages.hasError('required') && myForm.controls.multipleImages.touched"></validation>
     </div>

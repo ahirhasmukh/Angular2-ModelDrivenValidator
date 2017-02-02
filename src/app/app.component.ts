@@ -3,7 +3,6 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 import {SafeHtml, DomSanitizer} from "@angular/platform-browser";
 import {CompleterService, CompleterData} from "ng2-completer";
 import { validationMessageConstants } from "../app/until/validation.messages";
-import any = jasmine.any;
 
 @Component({
   selector: 'app-root',

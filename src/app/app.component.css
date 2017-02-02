@@ -5,6 +5,12 @@
 .ng-dirty.ng-invalid.ng-untouched validation{
     display: block;
 }
+.md2-autocomplete-input.ng-pristine.ng-touched{
+    display: block;
+}
+.btn-danger{
+    color:red;
+}
 
 /*
 http://plnkr.co/edit/fYxjHY5xALoLuqaQze6u?p=preview

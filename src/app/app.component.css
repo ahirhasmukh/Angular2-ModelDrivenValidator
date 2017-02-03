@@ -1,4 +1,4 @@
-.ng-pristine.ng-untouched validation{
+/*.ng-pristine.ng-untouched validation{
     display: none;
 }
 .ng-dirty.ng-invalid.ng-touched validation,
@@ -6,6 +6,12 @@
     display: block;
 }
 .md2-autocomplete-input.ng-pristine.ng-touched{
+    display: block;
+}*/
+form .ng-invalid.ng-dirty.ng-untouched + validation {
+    display: none;
+}
+form .ng-dirty.ng-invalid.ng-touched + validation{
     display: block;
 }
 .btn-danger{

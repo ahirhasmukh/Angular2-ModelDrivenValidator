@@ -1,25 +1,31 @@
 <form [formGroup]="myForm" novalidate (ngSubmit)="onSubmit(myForm.value, myForm.valid)">
     <div  style="margin-top:10px;">
         <label>Firstname <span class="btn-danger">*</span>:</label>
-        <div><input type="text" formControlName="firstname" placeholder="Enter firstname" #fname/></div>
-        <!--<div>{{fname.className}}</div>-->
-        <validation [errorMessage]="validationMessageConstants.FIRST_NAME_REQUIRED"
-                    *ngIf="myForm.controls.firstname.hasError('required') && myForm.controls.firstname.touched">
-        </validation>
-        <validation [errorMessage]="validationMessageConstants.FIRST_NAME + validationMessageConstants.LENGTH_2_TO_10_CHARACTER"
-                       *ngIf="myForm.controls.firstname.hasError('minlength') || myForm.controls.firstname.hasError('maxlength')">
-        </validation>
+        <div>
+            <input type="text" formControlName="firstname" placeholder="Enter firstname" #fname/>
+            <!--<div>{{fname.className}}</div>-->
+            <validation [errorMessage]="validationMessageConstants.FIRST_NAME_REQUIRED"
+                        *ngIf="myForm.controls.firstname.hasError('required')
+                        && myForm.controls.firstname.touched">
+            </validation>
+            <validation [errorMessage]="validationMessageConstants.FIRST_NAME + validationMessageConstants.LENGTH_2_TO_10_CHARACTER"
+                        *ngIf="myForm.controls.firstname.hasError('minlength') || myForm.controls.firstname.hasError('maxlength')">
+            </validation>
+        </div>
     </div>
 
     <div style="margin-top:10px;">
         <label>Lastname <span class="btn-danger">*</span>:</label>
-        <div><input type="text" formControlName="lastname" placeholder="Enter lastname"/></div>
-        <validation [errorMessage]="validationMessageConstants.LAST_NAME_REQUIRED"
-                    *ngIf="myForm.controls.lastname.hasError('required') && myForm.controls.lastname.touched">
-        </validation>
-        <validation [errorMessage]="validationMessageConstants.LAST_NAME + validationMessageConstants.LENGTH_2_TO_10_CHARACTER"
-                    *ngIf="myForm.controls.lastname.hasError('minlength') || myForm.controls.lastname.hasError('maxlength')">
-        </validation>
+        <div>
+            <input type="text" formControlName="lastname" placeholder="Enter lastname"/>
+            <validation [errorMessage]="validationMessageConstants.LAST_NAME_REQUIRED"
+                        *ngIf="myForm.controls.lastname.hasError('required')
+                        && myForm.controls.lastname.touched">
+            </validation>
+            <validation [errorMessage]="validationMessageConstants.LAST_NAME + validationMessageConstants.LENGTH_2_TO_10_CHARACTER"
+                        *ngIf="myForm.controls.lastname.hasError('minlength') || myForm.controls.lastname.hasError('maxlength')">
+            </validation>
+        </div>
     </div>
 
     <div>
@@ -34,14 +40,16 @@
     </div>
 
     <div>
-        <div><md2-datepicker #todate formControlName="todate" type="date"
-                             placeholder="To date"
-                             format="DD/MM/YYYY"
-                             (change)="handleChange($event)">
-        </md2-datepicker></div>
-        <validation [errorMessage]="validationMessageConstants.TO_DATE_REQUIRED"
-                    *ngIf="myForm.controls.todate.hasError('required') && myForm.controls.todate.touched">
-        </validation>
+        <div>
+            <md2-datepicker #todate formControlName="todate" type="date"
+                                 placeholder="To date"
+                                 format="DD/MM/YYYY"
+                                 (change)="handleChange($event)">
+            </md2-datepicker>
+            <validation [errorMessage]="validationMessageConstants.TO_DATE_REQUIRED"
+                        *ngIf="myForm.controls.todate.hasError('required') && myForm.controls.todate.touched">
+            </validation>
+        </div>
     </div>
 
     <div formGroupName="address">
@@ -61,8 +69,8 @@
                     <option value="9">9</option>
                     <option value="10">10</option>
                 </select>
+                <validation [errorMessage]="validationMessageConstants.SELECT + validationMessageConstants.REQUIRED_MSG" *ngIf="myForm.controls.address.controls.homeNumber.hasError('required') && myForm.controls.address.controls.homeNumber.touched"></validation>
             </div>
-            <validation [errorMessage]="validationMessageConstants.SELECT + validationMessageConstants.REQUIRED_MSG" *ngIf="myForm.controls.address.controls.homeNumber.hasError('required') && myForm.controls.address.controls.homeNumber.touched"></validation>
             <!--<div>{{select.className}}</div>-->
         </div>
         <div style="margin-top:10px;display: none">
@@ -71,40 +79,52 @@
         </div>
         <div style="margin-top:10px;">
             <label>Zipcode <span class="btn-danger">*</span>:</label>
-            <div><input type="text" formControlName="zipcode" placeholder="Enter zip"/></div>
-            <validation [errorMessage]="validationMessageConstants.ZIPCODE + validationMessageConstants.REQUIRED_MSG" *ngIf="myForm.controls.address.controls.zipcode.hasError('required') && myForm.controls.address.controls.zipcode.touched"></validation>
-            <validation [errorMessage]="validationMessageConstants.ZIPCODE + validationMessageConstants.ZIPCODE_PATTERN" *ngIf="myForm.controls.address.controls.zipcode.hasError('pattern')"></validation>
+            <div>
+                <input type="text" formControlName="zipcode" placeholder="Enter zip"/>
+                <validation [errorMessage]="validationMessageConstants.ZIPCODE + validationMessageConstants.REQUIRED_MSG" *ngIf="myForm.controls.address.controls.zipcode.hasError('required') && myForm.controls.address.controls.zipcode.touched"></validation>
+                <validation [errorMessage]="validationMessageConstants.ZIPCODE + validationMessageConstants.ZIPCODE_PATTERN" *ngIf="myForm.controls.address.controls.zipcode.hasError('pattern')"></validation>
+            </div>
         </div>
         <div style="margin-top:10px;">
             <label>Mobile number <span class="btn-danger">*</span>:</label>
-            <div><input type="text" formControlName="mobileNo" placeholder="Enter mobile number"/></div>
-            <validation [errorMessage]="validationMessageConstants.MOBILE_NUMBER + validationMessageConstants.REQUIRED_MSG" *ngIf="myForm.controls.address.controls.mobileNo.hasError('required') && myForm.controls.address.controls.mobileNo.touched"></validation>
-            <validation [errorMessage]="validationMessageConstants.MOBILE_NUMBER + validationMessageConstants.MOBILE_PATTERN" *ngIf="myForm.controls.address.controls.mobileNo.hasError('pattern')"></validation>
+            <div>
+                <input type="text" formControlName="mobileNo" placeholder="Enter mobile number"/>
+                <validation [errorMessage]="validationMessageConstants.MOBILE_NUMBER + validationMessageConstants.REQUIRED_MSG" *ngIf="myForm.controls.address.controls.mobileNo.hasError('required') && myForm.controls.address.controls.mobileNo.touched"></validation>
+                <validation [errorMessage]="validationMessageConstants.MOBILE_NUMBER + validationMessageConstants.MOBILE_PATTERN" *ngIf="myForm.controls.address.controls.mobileNo.hasError('pattern')"></validation>
+            </div>
         </div>
         <div style="margin-top:10px;">
             <label>Email address <span class="btn-danger">*</span>:</label>
-            <div><input type="text" formControlName="emailId" placeholder="Enter email address"/></div>
-            <validation [errorMessage]="validationMessageConstants.EMAIL_ADDRESS + validationMessageConstants.REQUIRED_MSG" *ngIf="myForm.controls.address.controls.emailId.hasError('required') && myForm.controls.address.controls.emailId.touched"></validation>
-            <validation [errorMessage]="validationMessageConstants.VALID_EMAIL_ADDRESS" *ngIf="myForm.controls.address.controls.emailId.hasError('pattern')"></validation>
+            <div>
+                <input type="text" formControlName="emailId" placeholder="Enter email address"/>
+                <validation [errorMessage]="validationMessageConstants.EMAIL_ADDRESS + validationMessageConstants.REQUIRED_MSG" *ngIf="myForm.controls.address.controls.emailId.hasError('required') && myForm.controls.address.controls.emailId.touched"></validation>
+                <validation [errorMessage]="validationMessageConstants.VALID_EMAIL_ADDRESS" *ngIf="myForm.controls.address.controls.emailId.hasError('pattern')"></validation>
+            </div>
         </div>
     </div>
 
     <div style="width: 200px;margin-top: 10px;">
-       <div><md2-autocomplete [items]="cityList" item-text="name" formControlName="items" (change)="handleChange($event)" placeholder="Select city"></md2-autocomplete></div>
-       <validation [errorMessage]="validationMessageConstants.CITY" *ngIf="myForm.controls.items.hasError('required') && myForm.controls.items.dirty"></validation>
-        <!--<validation [errorMessage]="validationMessageConstants.VALID_EMAIL_ADDRESS" *ngIf="myForm.controls.items.hasError('pattern')" [isFormInvalid]="submitted" [disabled]="!myForm.valid"></validation>-->
+       <div>
+            <md2-autocomplete [items]="cityList" item-text="name" formControlName="items" (change)="handleChange($event)" placeholder="Select city"></md2-autocomplete>
+            <validation [errorMessage]="validationMessageConstants.CITY" *ngIf="myForm.controls.items.hasError('required') && myForm.controls.items.dirty"></validation>
+            <!--<validation [errorMessage]="validationMessageConstants.VALID_EMAIL_ADDRESS" *ngIf="myForm.controls.items.hasError('pattern')" [isFormInvalid]="submitted" [disabled]="!myForm.valid"></validation>-->
+       </div>
     </div>
 
     <div style="margin-top:10px;">
         <label>Single image <span class="btn-danger">*</span>:</label>
-        <div><input type="file" (change)="selectImage($event)" formControlName="singalImage" placeholder="Enter image" accept=".png,.jpg,.jpeg,.gif"/></div>
-        <validation [errorMessage]="validationMessageConstants.SINGLE_IMAGE_REQUIRED" *ngIf="myForm.controls.singalImage.hasError('required') && myForm.controls.singalImage.touched"></validation>
+        <div>
+            <input type="file" (change)="selectImage($event)" formControlName="singalImage" placeholder="Enter image" accept=".png,.jpg,.jpeg,.gif"/>
+            <validation [errorMessage]="validationMessageConstants.SINGLE_IMAGE_REQUIRED" *ngIf="myForm.controls.singalImage.hasError('required') && myForm.controls.singalImage.touched"></validation>
+        </div>
     </div>
 
     <div style="margin-top:10px;">
         <label>Multiple image <span class="btn-danger">*</span>:</label>
-        <div><input type="file"  (change)="onChange($event)" multiple formControlName="multipleImages" placeholder="Enter multiple image" accept=".png,.jpg,.jpeg,.gif"/></div>
-        <validation [errorMessage]="validationMessageConstants.MULTIPLE_IMAGES_REQUIRED" *ngIf="myForm.controls.multipleImages.hasError('required') && myForm.controls.multipleImages.touched"></validation>
+        <div>
+            <input type="file"  (change)="onChange($event)" multiple formControlName="multipleImages" placeholder="Enter multiple image" accept=".png,.jpg,.jpeg,.gif"/>
+            <validation [errorMessage]="validationMessageConstants.MULTIPLE_IMAGES_REQUIRED" *ngIf="myForm.controls.multipleImages.hasError('required') && myForm.controls.multipleImages.touched"></validation>
+        </div>
     </div>
 
     <div style="margin-top:10px;">

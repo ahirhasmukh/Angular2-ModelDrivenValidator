@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewEncapsulation, ApplicationRef} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation, ApplicationRef, Input} from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import {SafeHtml, DomSanitizer} from "@angular/platform-browser";
 import {CompleterService, CompleterData} from "ng2-completer";
@@ -120,4 +120,15 @@ export class AppComponent implements OnInit{
     todate._viewValue = null;
     /*this.addDataForm();*/
   }
+
+  /*private _date: Date = null;
+  private _panelOpen = false;
+  private _selected: Date = null;
+  private _openOnFocus: boolean = false;
+
+  _onFocus() {
+    if (!this.panelOpen && this.openOnFocus) {
+       this.open();
+    }
+  }*/
 }

@@ -33,7 +33,7 @@
                         type="date"
                         placeholder="From Date"
                         format="DD/MM/YYYY"
-                        (change)="handleChange($event)">
+                        (change)="handleChange($event)" openOnFocus="true" isOpen="1">
         </md2-datepicker>
         <validation [errorMessage]="validationMessageConstants.FROM_DATE_REQUIRED"
                     *ngIf="myForm.controls.fromdate.hasError('required') && myForm.controls.fromdate.touched"></validation>
@@ -44,7 +44,7 @@
             <md2-datepicker #todate formControlName="todate" type="date"
                                  placeholder="To date"
                                  format="DD/MM/YYYY"
-                                 (change)="handleChange($event)">
+                                 (change)="handleChange($event)" openOnFocus="true" isOpen="1">
             </md2-datepicker>
             <validation [errorMessage]="validationMessageConstants.TO_DATE_REQUIRED"
                         *ngIf="myForm.controls.todate.hasError('required') && myForm.controls.todate.touched">

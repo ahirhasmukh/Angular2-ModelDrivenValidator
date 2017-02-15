@@ -11,9 +11,14 @@
 form .ng-invalid.ng-dirty.ng-untouched + validation {
     display: none;
 }
+.ng-touched.ng-dirty.ng-valid + validation{
+    display: none;
+}
 form .ng-dirty.ng-invalid.ng-touched + validation{
     display: block;
 }
+validation{display: block;}
+
 .btn-danger{
     color:red;
 }

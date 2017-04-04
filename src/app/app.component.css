@@ -22,9 +22,36 @@ validation{display: block;}
 .btn-danger{
     color:red;
 }
+.validation_check validation + validation.pattern{
+    display: none!important;
+}
+/*div validation + validation.quantity{}*/
+
 
 /*
 http://plnkr.co/edit/fYxjHY5xALoLuqaQze6u?p=preview
 https://scotch.io/tutorials/using-angular-2s-model-driven-forms-with-formgroup-and-formcontrol
 https://juristr.com/blog/2016/11/ng2-template-driven-form-validators/
 */
+
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+form{
+    margin-left:5px;
+}
+button[disabled], html input[disabled] {
+    color: gray;
+}
+.box-shadow{
+
+}

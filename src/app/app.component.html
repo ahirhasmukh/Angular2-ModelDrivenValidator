@@ -1,39 +1,48 @@
+<!--<div class="dropzone" appDnd (filesChangeEmiter)="onFilesChange($event)">
+    <div class="text-wrapper">
+        <div class="centered">Drop your file here!</div>
+    </div>
+</div>-->
+
+<app-upload></app-upload>
+
+<br/><br/><br/>
+<!--
+
+<app-constant></app-constant>
+<p>{{validationMessageConstants.CITY}}</p>
+
+<div class="box-shadow"></div>
 <form [formGroup]="myForm" novalidate (ngSubmit)="onSubmit(myForm.value, myForm.valid)">
-    <div  style="margin-top:10px;">
+    <div style="margin-top:10px;">
         <label>Firstname <span class="btn-danger">*</span>:</label>
-        <div>
+        <div class="validation_check">
             <input type="text" formControlName="firstname" placeholder="Enter firstname" #fname/>
-            <!--<div>{{fname.className}}</div>-->
-            <validation [errorMessage]="validationMessageConstants.FIRST_NAME_REQUIRED"
-                        *ngIf="myForm.controls.firstname.hasError('required')
-                        && myForm.controls.firstname.touched">
-            </validation>
-            <validation [errorMessage]="validationMessageConstants.FIRST_NAME + validationMessageConstants.LENGTH_2_TO_10_CHARACTER"
-                        *ngIf="myForm.controls.firstname.hasError('minlength') || myForm.controls.firstname.hasError('maxlength')">
-            </validation>
+            <div></div>
+            <validation [errorMessage]="validationMessageConstants.FIRST_NAME_REQUIRED" *ngIf="myForm.controls.firstname.hasError('required') && myForm.controls.firstname.touched"></validation>
+            <validation [errorMessage]="validationMessageConstants.FIRST_NAME + validationMessageConstants.LENGTH_2_TO_10_CHARACTER" *ngIf="myForm.controls.firstname.hasError('minlength') || myForm.controls.firstname.hasError('maxlength')"></validation>
+            <validation class="pattern" [errorMessage]="validationMessageConstants.FIRST_NAME_PATTERN" *ngIf="myForm.controls.firstname.hasError('pattern')"></validation>
         </div>
     </div>
 
     <div style="margin-top:10px;">
         <label>Lastname <span class="btn-danger">*</span>:</label>
-        <div>
+        <div class="validation_check">
             <input type="text" formControlName="lastname" placeholder="Enter lastname"/>
-            <validation [errorMessage]="validationMessageConstants.LAST_NAME_REQUIRED"
-                        *ngIf="myForm.controls.lastname.hasError('required')
-                        && myForm.controls.lastname.touched">
-            </validation>
-            <validation [errorMessage]="validationMessageConstants.LAST_NAME + validationMessageConstants.LENGTH_2_TO_10_CHARACTER"
-                        *ngIf="myForm.controls.lastname.hasError('minlength') || myForm.controls.lastname.hasError('maxlength')">
-            </validation>
+            <validation [errorMessage]="validationMessageConstants.LAST_NAME_REQUIRED" *ngIf="myForm.controls.lastname.hasError('required') && myForm.controls.lastname.touched"></validation>
+            <validation [errorMessage]="validationMessageConstants.LAST_NAME + validationMessageConstants.LENGTH_2_TO_10_CHARACTER" *ngIf="myForm.controls.lastname.hasError('minlength') || myForm.controls.lastname.hasError('maxlength')"></validation>
+            <validation class="pattern" [errorMessage]="validationMessageConstants.LAST_NAME_PATTERN" *ngIf="myForm.controls.lastname.hasError('pattern')"></validation>
         </div>
     </div>
 
     <div>
-        <md2-datepicker #fromdate formControlName="fromdate"
+        <md2-datepicker #fromdate
+                        formControlName="fromdate"
+                        [(ngModel)]="minDate"
                         type="date"
+                        [min]="minDate"
                         placeholder="From Date"
-                        format="DD/MM/YYYY"
-                        (change)="handleChange($event)" openOnFocus="true" isOpen="1">
+                        (change)="handleChange($event)" openOnFocus="true">
         </md2-datepicker>
         <validation [errorMessage]="validationMessageConstants.FROM_DATE_REQUIRED"
                     *ngIf="myForm.controls.fromdate.hasError('required') && myForm.controls.fromdate.touched"></validation>
@@ -41,11 +50,20 @@
 
     <div>
         <div>
-            <md2-datepicker #todate formControlName="todate" type="date"
-                                 placeholder="To date"
-                                 format="DD/MM/YYYY"
-                                 (change)="handleChange($event)" openOnFocus="true" isOpen="1">
+            <md2-datepicker type="date"
+                            #todate
+                            formControlName="todate"
+                            placeholder="Date"
+                            (change)="handleChange($event)"
+                            openOnFocus="true">
             </md2-datepicker>
+
+            &lt;!&ndash;<md2-datepicker placeholder="Select Date"
+                            formControlName="todate" #todate
+                            openOnFocus="true"
+                            type="date">
+            </md2-datepicker>&ndash;&gt;
+
             <validation [errorMessage]="validationMessageConstants.TO_DATE_REQUIRED"
                         *ngIf="myForm.controls.todate.hasError('required') && myForm.controls.todate.touched">
             </validation>
@@ -71,9 +89,9 @@
                 </select>
                 <validation [errorMessage]="validationMessageConstants.SELECT + validationMessageConstants.REQUIRED_MSG" *ngIf="myForm.controls.address.controls.homeNumber.hasError('required') && myForm.controls.address.controls.homeNumber.touched"></validation>
             </div>
-            <!--<div>{{select.className}}</div>-->
+            &lt;!&ndash;<div>{{select.className}}</div>&ndash;&gt;
         </div>
-        <div style="margin-top:10px;display: none">
+        &lt;!&ndash;<div style="margin-top:10px;display: none">
             <label>Street <span class="btn-danger">*</span>:</label>
             <div><input type="text" formControlName="street" placeholder="Enter street"/></div>
         </div>
@@ -100,18 +118,18 @@
                 <validation [errorMessage]="validationMessageConstants.EMAIL_ADDRESS + validationMessageConstants.REQUIRED_MSG" *ngIf="myForm.controls.address.controls.emailId.hasError('required') && myForm.controls.address.controls.emailId.touched"></validation>
                 <validation [errorMessage]="validationMessageConstants.VALID_EMAIL_ADDRESS" *ngIf="myForm.controls.address.controls.emailId.hasError('pattern')"></validation>
             </div>
-        </div>
+        </div>&ndash;&gt;
     </div>
 
-    <div style="width: 200px;margin-top: 10px;">
+    &lt;!&ndash;<div style="width: 200px;margin-top: 10px;">
        <div>
             <md2-autocomplete [items]="cityList" item-text="name" formControlName="items" (change)="handleChange($event)" placeholder="Select city"></md2-autocomplete>
             <validation [errorMessage]="validationMessageConstants.CITY" *ngIf="myForm.controls.items.hasError('required') && myForm.controls.items.dirty"></validation>
-            <!--<validation [errorMessage]="validationMessageConstants.VALID_EMAIL_ADDRESS" *ngIf="myForm.controls.items.hasError('pattern')" [isFormInvalid]="submitted" [disabled]="!myForm.valid"></validation>-->
+            &lt;!&ndash;<validation [errorMessage]="validationMessageConstants.VALID_EMAIL_ADDRESS" *ngIf="myForm.controls.items.hasError('pattern')" [isFormInvalid]="submitted" [disabled]="!myForm.valid"></validation>&ndash;&gt;
        </div>
-    </div>
+    </div>&ndash;&gt;
 
-    <div style="margin-top:10px;">
+    &lt;!&ndash;<div style="margin-top:10px;">
         <label>Single image <span class="btn-danger">*</span>:</label>
         <div>
             <input type="file" (change)="selectImage($event)" formControlName="singalImage" placeholder="Enter image" accept=".png,.jpg,.jpeg,.gif"/>
@@ -125,31 +143,42 @@
             <input type="file"  (change)="onChange($event)" multiple formControlName="multipleImages" placeholder="Enter multiple image" accept=".png,.jpg,.jpeg,.gif"/>
             <validation [errorMessage]="validationMessageConstants.MULTIPLE_IMAGES_REQUIRED" *ngIf="myForm.controls.multipleImages.hasError('required') && myForm.controls.multipleImages.touched"></validation>
         </div>
-    </div>
+    </div>&ndash;&gt;
 
     <div style="margin-top:10px;">
         <div><button type="submit" [disabled]="!myForm.valid">Save</button>
         <button type="button" (click)="reset(fromdate,todate)">Cancel</button> </div>
     </div>
 </form>
+<hr/>
 
-<!-- <table>
+<table>
     <thead>
         <tr>
             <th>Firstname</th>
             <th>Lastname</th>
-            <th>Street</th>
-            <th>Zipcode</th>
+            <th>From date</th>
+            <th>To date</th>
             <th>City</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+        <tr *ngFor="let demoDate of formItem; let i=index;">
+            <td>{{demoDate.firstname}}</td>
+            <td>{{demoDate.lastname}}</td>
+            <td>{{demoDate.fromdate}}</td>
+            <td>{{demoDate.todate}}</td>
         </tr>
     </tbody>
-</table> -->
+</table>
+
+<app-add-button (showDialog)="dialogStatus(confirm)"></app-add-button>
+
+<md2-dialog #confirm>
+    <md2-dialog-title>Would you like to delete your debt?</md2-dialog-title>
+    All of the banks have agreed to forgive you your debts.
+    <md2-dialog-footer>
+        <button button="primary" (click)="close(confirm)">Ok</button>
+        <button button (click)="close(confirm)">Cancel</button>
+    </md2-dialog-footer>
+</md2-dialog>-->

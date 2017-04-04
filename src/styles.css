@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+md2-tooltip .md2-tooltip{
+    background-color:rgb(72, 65, 65)!important;
+    color: #fff!important;
+    font-size: 12px!important;
+    border-radius: 0px!important;
+    font-weight:500!important;
+    font-family: 'Noto Sans', sans-serif!important;
+    padding: 2px 10px!important;
+    opacity: 1!important;
+}

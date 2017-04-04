@@ -20,6 +20,11 @@ import { Md2Module }  from 'md2';
 import { Ng2CompleterModule } from "ng2-completer";
 import {SelectModule} from 'ng2-select';
 import {ValidationComponent} from "./validation/validation.component";
+import {ConstantModule} from "./constant/constant.module";
+import {AddButtonModule} from "./add-button/add-button.module";
+import { UploadComponent } from './upload/upload.component';
+import { DndDirective } from './upload/dnd.directive';
+
 
 @NgModule({
   declarations: [
@@ -31,7 +36,10 @@ import {ValidationComponent} from "./validation/validation.component";
     EventBindingComponent,
     TwoWayBindingComponent,
     LifecycleComponent,
-    ValidationComponent
+    ValidationComponent,
+    UploadComponent,
+    DndDirective,
+    DndDirective
   ],
   imports: [
     BrowserModule,
@@ -44,7 +52,9 @@ import {ValidationComponent} from "./validation/validation.component";
     MaterialModule.forRoot(),
     Ng2CompleterModule,
     SelectModule,
-    Md2Module.forRoot()
+    Md2Module.forRoot(),
+    ConstantModule,
+    AddButtonModule
   ],
   providers: [ ],
   bootstrap: [AppComponent]

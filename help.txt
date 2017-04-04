@@ -2,3 +2,29 @@ For validations :
 http://blog.angular-university.io/introduction-to-angular-2-forms-template-driven-vs-model-driven/
 http://www.kirjai.com/validation-model-driven-forms-ng2/
 https://www.youtube.com/watch?v=JtdYpDESmlg
+
+
+CLI Setup:
+    1. npm install -g angular-cli [cli install]
+    2. ng new projectName [new project greate]
+    3. cd projectName [enter in project]
+    4. ng serve
+    5. npm install typescript -g [typescript install - optional]
+    6. ng generate component testComponent [create a new component]
+
+Update node version:
+   http://tecadmin.net/upgrade-nodejs-via-npm/
+   For check version : node -v
+   For latest node update: sudo n stable
+
+Package need to install:
+    1. npm install
+    2. npm install --save @angular/material
+    3. npm install md2 --save
+    4. npm install ng2-slimscroll --save
+    5. npm install ng2-auto-complete --save
+    6. npm install --save angular2-select
+    7. npm install ng2-toastr --save
+    8. npm install ng2-pagination --save
+    9. npm install --save angular2-moment
+    10. npm install jspdf-autotable --save

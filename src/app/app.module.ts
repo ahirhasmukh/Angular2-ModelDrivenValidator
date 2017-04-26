@@ -24,7 +24,13 @@ import {ConstantModule} from "./constant/constant.module";
 import {AddButtonModule} from "./add-button/add-button.module";
 import { UploadComponent } from './upload/upload.component';
 import { DndDirective } from './upload/dnd.directive';
-
+import { SwiperComponent } from './swiper/swiper.component';
+import {SwiperModule} from "angular2-useful-swiper";
+import { MultiSelectComponent } from './multi-select/multi-select.component';
+import { ServicesComponent } from './services/services.component';
+import {LogService} from "./services/log.service";
+import { ValidationDemoComponent } from './validation-demo/validation-demo.component';
+import { CropImageComponent } from './crop-image/crop-image.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +45,12 @@ import { DndDirective } from './upload/dnd.directive';
     ValidationComponent,
     UploadComponent,
     DndDirective,
-    DndDirective
+    DndDirective,
+    SwiperComponent,
+    MultiSelectComponent,
+    ServicesComponent,
+    ValidationDemoComponent,
+    CropImageComponent
   ],
   imports: [
     BrowserModule,
@@ -54,9 +65,10 @@ import { DndDirective } from './upload/dnd.directive';
     SelectModule,
     Md2Module.forRoot(),
     ConstantModule,
-    AddButtonModule
+    AddButtonModule,
+    SwiperModule
   ],
-  providers: [ ],
+  providers: [LogService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

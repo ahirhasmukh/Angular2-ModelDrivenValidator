@@ -1,28 +1,50 @@
-import {Component, OnInit, Output, EventEmitter, HostListener} from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { validationMessageConstants } from "../app/until/validation.messages";
+import {
+  Component,
+  OnInit,
+  Output,
+  EventEmitter,
+  HostListener,
+  trigger,
+  state,
+  style,
+  transition,
+  animate,
+  keyframes
+} from '@angular/core';
+import {
+  FormGroup,
+  FormControl,
+  FormBuilder,
+  Validators
+} from '@angular/forms';
+import {
+  validationMessageConstants
+} from "../app/until/validation.messages";
+
+export interface Image {
+  title: string;
+  url: string;
+}
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 
 export class AppComponent implements OnInit{
-
-  validationMessageConstants = new validationMessageConstants();
-
+  /*validationMessageConstants = new validationMessageConstants();
   private value:any = {};
   private _disabledV:string = '0';
   private disabled:boolean = false;
   public items:Array<any> = [];
-
   myForm : FormGroup;
-
   date: Date = null;
   minDate: Date = null;
   maxDate: Date = null;
-  str ="8000777298";
+  str ="8000777298";*/
+  public images = IMAGES;
+  image_url:any ="";
 
   constructor(private formBuilder: FormBuilder){
     /*setTimeout(() => {
@@ -32,18 +54,38 @@ export class AppComponent implements OnInit{
       this.items1.push({ name: 'Gorva', value: '10', disabled: false });
     }, 3000);*/
   }
+  ngOnInit(){}
 
-  public ngOnInit():any {
-    this.addDataForm();
+  readUrl(event) {
+     if (event.target.files && event.target.files[0]) {
+       var reader = new FileReader();
+       reader.onload = (event:any) => {
+       this.image_url = event.target.result;
+     }
+     reader.readAsDataURL(event.target.files[0]);
+     }
+  }
 
+  /*isRequired = false;
+   isDisabled = false;
+   tag: any;
+   tags: Array<any> = [
+   { name: 'Vadodara', value: '1' },
+   { name: 'Rajkot', value: '2' },
+   { name: 'Delhi', value: '3' },
+   { name: 'Chennai', value: '4' },
+   { name: 'Mumbai', value: '5' },
+   { name: 'Goa', value: '6' }
+   ];*/
+   /* this.addDataForm();
     this.date = new Date();
     this.minDate = new Date();
     this.minDate.setMonth(this.minDate.getMonth());
     this.maxDate = new Date();
     this.maxDate.setMonth(this.maxDate.getMonth() + 3);
-
+*/
     // *8**1***08
-
+/*
     let i;
     for(i=0;i<this.str.length;i++){
         if((i==1) || (i==4) || (i==8) ||(i==9)){
@@ -64,15 +106,15 @@ export class AppComponent implements OnInit{
       todate: new FormControl('',[<any>Validators.required]),
       address : this.formBuilder.group({
         homeNumber : new FormControl('',<any>Validators.required),
-        /*street:  new FormControl(),
+        /!*street:  new FormControl(),
         zipcode:  new FormControl('',[<any>Validators.required,<any>Validators.pattern('[0-9]{5,6}')]),
         mobileNo: new FormControl('',[<any>Validators.required,<any>Validators.pattern('[0-9]{10,11}')]),
-        emailId: new FormControl('',[<any>Validators.required,<any>Validators.pattern(/^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i)])*/
+        emailId: new FormControl('',[<any>Validators.required,<any>Validators.pattern(/^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i)])*!/
       }),
-      /*items: new FormControl('',[<any>Validators.required]),*/
-      /*color: new FormControl(),
+      /!*items: new FormControl('',[<any>Validators.required]),*!/
+      /!*color: new FormControl(),
       singalImage: new FormControl(''),
-      multipleImages: new FormControl('')*/
+      multipleImages: new FormControl('')*!/
     });
   }
 
@@ -86,25 +128,25 @@ export class AppComponent implements OnInit{
       console.log('To date:'+ value.todate);
       console.log('Number:'+ value.address.homeNumber);
 
-   /* console.log('Zipcode:'+ value.address.zipcode);
+   /!* console.log('Zipcode:'+ value.address.zipcode);
       console.log('Mobile number:'+ value.address.mobileNo);
       console.log('Email address:'+ value.address.emailId);
-      console.log('AutoComplete:'+ value.items.name);*/
+      console.log('AutoComplete:'+ value.items.name);*!/
 
       this.formItem.push(value)
-      /*this.formItem.push(value.lastname)
+      /!*this.formItem.push(value.lastname)
       this.formItem.push(value.fromdate)
       this.formItem.push(value.todate)
       this.formItem.push(value.address.homeNumber)
-*/
+*!/
 
 
- /*   this.formItem.push(value.address.zipcode)
+ /!*   this.formItem.push(value.address.zipcode)
       this.formItem.push(value.address.mobileNo)
       this.formItem.push(value.address.emailId)
       this.formItem.push(value.items.name)
-      /*console.log('Single Image:'+ this.file.name);
-      console.log('Multiple Image:');*/
+      /!*console.log('Single Image:'+ this.file.name);
+      console.log('Multiple Image:');*!/
     }
     else{
       console.log('Form invalid');
@@ -128,12 +170,12 @@ export class AppComponent implements OnInit{
     fromdate._viewValue = null;
     todate._value = null;
     todate._viewValue = null;
-    /*this.addDataForm();*/
+    /!*this.addDataForm();*!/
   }
 
   handleChange(value: any) {
     console.log('Changed data: ', value);
-  }
+  }*/
 
   /*file :File;
   selectImage(event: EventTarget){
@@ -187,11 +229,32 @@ export class AppComponent implements OnInit{
    str5 = this.str.slice(5,8); // 772
    str6 = this.str.slice(8,10); // 98
    str7 = this.str5.replace(this.str5, "***");*/
-  dialogStatus(dialog:any){
+  /*dialogStatus(dialog:any){
     dialog.open();
   }
 
-  close(dialog:any){
-    dialog.close();
+  config: Object = {
+    pagination: '.swiper-pagination',
+    paginationClickable: true,
+    nextButton: '.swiper-button-next',
+    prevButton: '.swiper-button-prev',
+    spaceBetween: 30
+  };
+
+  open(dialog: any) {
+    dialog.open();
   }
+
+  close(dialog: any) {
+    dialog.close();
+  }*/
 }
+
+
+var IMAGES: Image[] = [
+  { "title": "We are covered", "url": "https://raw.githubusercontent.com/christiannwamba/angular2-carousel-component/master/images/covered.jpg" },
+  { "title": "Generation Gap", "url": "https://raw.githubusercontent.com/christiannwamba/angular2-carousel-component/master/images/generation.jpg" },
+  { "title": "Potter Me", "url": "https://raw.githubusercontent.com/christiannwamba/angular2-carousel-component/master/images/potter.jpg" },
+  { "title": "Pre-School Kids", "url": "https://raw.githubusercontent.com/christiannwamba/angular2-carousel-component/master/images/preschool.jpg" },
+  { "title": "Young Peter Cech", "url": "https://raw.githubusercontent.com/christiannwamba/angular2-carousel-component/master/images/soccer.jpg" }
+];

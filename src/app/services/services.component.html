@@ -1,0 +1,10 @@
+<div>
+  <input type="text" #input>
+  <button type="button" (click)="getLog(input.value)">Log</button>
+  <button type="button" (click)="onStore(input.value)">Add</button>
+  <button type="button" (click)="viewData()">View</button>
+
+    <ul>
+        <li *ngFor="let item of items">{{item}}</li>
+    </ul>
+</div>

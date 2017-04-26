@@ -1,0 +1,31 @@
+<div style="margin:20px;width:200px;">
+  <!--<md2-select name="pokemon"-->
+              <!--multiple-->
+              <!--placeholder="Pokemon"-->
+              <!--[(ngModel)]="currentPokemon"-->
+              <!--[required]="pokemonRequired"-->
+              <!--[disabled]="pokemonDisabled"-->
+              <!--#pokemonControl="ngModel">-->
+    <!--<md2-option *ngFor="let creature of pokemon" [value]="creature.value">-->
+      <!--{{ creature.viewValue }}-->
+    <!--</md2-option>-->
+  <!--</md2-select>-->
+
+  <md2-select name="pokemon"
+              multiple
+              placeholder="Pokemon"
+              [(ngModel)]="currentPokemon"
+              (change)="passparam($event.value)">
+    <md2-option *ngFor="let creature of pokemon" [value]="creature.value">
+      {{ creature.name }}
+    </md2-option>
+  </md2-select>
+</div>
+
+<button (click)="resetValue()">Reset</button>
+
+<!--<label><input type="radio" value="Paid" #paidRef name="plans"> Paid</label>
+<label><input type="radio" value="Free" #freeRef name="plans"> Free</label>-->
+
+<label><input type="radio" name="identityProof" #electionCard checked value="electionCard" [attr.disabled]="disableIdProof"/> electionCard</label>
+<label><input type="radio" name="identityProof" #panCard value="panCard" [attr.disabled]="disableIdProof"/> panCard</label>

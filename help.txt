@@ -12,10 +12,14 @@ CLI Setup:
     5. npm install typescript -g [typescript install - optional]
     6. ng generate component testComponent [create a new component]
 
+
 Update node version:
    http://tecadmin.net/upgrade-nodejs-via-npm/
    For check version : node -v
    For latest node update: sudo n stable
+
+Update node :
+   sudo n latest
 
 Package need to install:
     1. npm install

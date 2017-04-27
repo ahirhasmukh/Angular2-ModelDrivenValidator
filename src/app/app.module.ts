@@ -31,6 +31,7 @@ import { ServicesComponent } from './services/services.component';
 import {LogService} from "./services/log.service";
 import { ValidationDemoComponent } from './validation-demo/validation-demo.component';
 import { CropImageComponent } from './crop-image/crop-image.component';
+import {ImageCropperComponent} from "ng2-img-cropper";
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { CropImageComponent } from './crop-image/crop-image.component';
     MultiSelectComponent,
     ServicesComponent,
     ValidationDemoComponent,
-    CropImageComponent
+    CropImageComponent,
+    ImageCropperComponent
   ],
   imports: [
     BrowserModule,

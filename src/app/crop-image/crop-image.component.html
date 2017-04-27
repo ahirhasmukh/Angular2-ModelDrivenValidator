@@ -1,3 +1,30 @@
-<p>
-  crop-image works!
-</p>
+<div>
+    <!--<div class="pull-left">
+        <h3>Sample cropper 1</h3>
+        <img-cropper [image]="data1" [settings]="cropperSettings1" (onCrop)="cropped($event)"></img-cropper>
+        <br>
+        <span class="result" *ngIf="data1.image" >
+                <img [src]="data1.image" [width]="cropperSettings1.croppedWidth" [height]="cropperSettings1.croppedHeight">
+            </span>
+    </div>-->
+
+    <div class="pull-left">
+        <h3>
+            <div class="file-upload">
+                <span class="text">Image Upload</span>
+                <input id="custom-input" type="file" (change)="fileChangeListener($event,cropImageDialog)">
+            </div>
+        </h3>
+
+        <md2-dialog #cropImageDialog>
+            <img-cropper #cropper [image]="data2" [settings]="cropperSettings2"></img-cropper>
+            <md2-dialog-footer>
+                <button type="button" class="btn btn-danger" (click)="cropImageDialog.close()">Save</button>
+            </md2-dialog-footer>
+        </md2-dialog>
+        <br>
+        <span class="result rounded" *ngIf="data2.image" >
+            <img [src]="data2.image" [width]="cropperSettings2.croppedWidth" [height]="cropperSettings2.croppedHeight">
+        </span>
+    </div>
+</div>

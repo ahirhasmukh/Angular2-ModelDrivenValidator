@@ -1,0 +1,66 @@
+h3 {
+    padding-bottom: 20px;
+    border-bottom: 0px solid #a0a0a0;
+}
+
+h4 {
+    padding-bottom: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #a0a0a0;
+}
+
+.result {
+    margin-top: 30px;
+    border: 1px solid rgba(125,125,125,0.6);
+    display: inline-block;
+    padding: 1px;
+}
+
+.result.rounded > img {
+    border-radius: 100px;
+}
+
+.pull-left {
+    min-width: 400px;
+    float: left;
+    margin: 10px;
+    padding: 10px;
+}
+
+.file-upload {
+    height: 25px;
+    width: 100px;
+    position: relative;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: right;
+
+    border: 1px solid #FFF;
+    overflow: hidden;
+    background-image: linear-gradient(to bottom, #2590EB 50%, #FFFFFF 50%);
+    background-size: 100% 200%;
+    transition: all 1s;
+    color: #FFF;
+    font-size: 10px;
+}
+
+.file-upload:hover {
+    background-position: 0 -100%;
+    color: #2590Eb;
+}
+
+.text {
+    font-size: 14px;
+}
+
+input[type='file'] {
+    height: 25px;
+    width: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+}
